@@ -4,6 +4,8 @@ import (
 	"context"
 	"database/sql"
 	"errors"
+	"fmt"
+
 	"github.com/go-kit/kit/log/level"
 
 	"github.com/cockroachdb/cockroach-go/crdb"
@@ -46,6 +48,8 @@ func (repo *repository) CreateOrder(ctx context.Context, order order.Order) erro
 func createOrder(tx *sql.Tx, order order.Order) error {
 
 	// Insert order into the "orders" table.
+	fmt.Printf("Reached before insert %v, %v,%v,%v,%v\n", order.ID, order.CustomerID, order.Status, order.CreatedOn, order.RestaurantId)
+
 	sql := `
 			INSERT INTO orders (id, customerid, status, createdon, restaurantid)
 			VALUES ($1,$2,$3,$4,$5)`

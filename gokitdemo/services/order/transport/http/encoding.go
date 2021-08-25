@@ -3,6 +3,7 @@ package http
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -16,6 +17,7 @@ func decodeCreateRequest(_ context.Context, r *http.Request) (request interface{
 	if e := json.NewDecoder(r.Body).Decode(&req.Order); e != nil {
 		return nil, e
 	}
+	fmt.Printf("Recvd %+v\n\n", req.Order)
 	return req, nil
 }
 

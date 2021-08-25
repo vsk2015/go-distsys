@@ -28,6 +28,7 @@ func main() {
 	var (
 		httpAddr = flag.String("http.addr", ":3000", "HTTP listen address")
 	)
+
 	flag.Parse()
 	// initialize our OpenCensus configuration and defer a clean-up
 	defer oc.Setup("order").Close()
@@ -50,8 +51,9 @@ func main() {
 	{
 		var err error
 		// Connect to the "ordersdb" database
+		fmt.Printf("SQL drvrs %v\n", sql.Drivers())
 		db, err = sql.Open("postgres",
-			"postgresql://shijuvar@localhost:26257/ordersdb?sslmode=disable")
+			"postgresql://root@localhost:26257/ordersdb?sslmode=disable")
 		if err != nil {
 			level.Error(logger).Log("exit", err)
 			os.Exit(-1)

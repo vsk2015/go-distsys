@@ -14,6 +14,7 @@ import (
 	"github.com/go-kit/kit/log/level"
 	kitoc "github.com/go-kit/kit/tracing/opencensus"
 	kitgrpc "github.com/go-kit/kit/transport/grpc"
+	_ "github.com/lib/pq"
 	"github.com/oklog/oklog/pkg/group"
 	"google.golang.org/grpc"
 
@@ -28,7 +29,7 @@ import (
 
 const (
 	port     = ":50051"
-	dbsource = "postgresql://shijuvar@localhost:26257/ordersdb?sslmode=disable"
+	dbsource = "postgresql://root@localhost:26257/ordersdb?sslmode=disable"
 )
 
 func main() {
