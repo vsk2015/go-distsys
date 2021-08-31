@@ -5,7 +5,9 @@ import (
 	"context"
 	"log"
 	"net"
-
+    /*vk: usage of below is resulting in failure to connect to nats-streaming-server 
+	with error "nats: no responders available for request" FIX is: change 
+	nats-server's version this project requires v18*/
 	stan "github.com/nats-io/stan.go"
 	"google.golang.org/grpc"
 

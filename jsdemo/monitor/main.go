@@ -29,7 +29,7 @@ func main() {
 		log.Printf("monitor service subscribes from subject:%s\n", msg.Subject)
 		log.Printf("OrderID:%d, CustomerID: %s, Status:%s\n", order.OrderID, order.CustomerID, order.Status)
 	}, nats.Durable("monitor"), nats.ManualAck())
-
+    //vk:holds the main() from returning, main() goroutine has already terminated
 	runtime.Goexit()
 
 }

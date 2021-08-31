@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"strconv"
+	"time"
 
 	"github.com/nats-io/nats.go"
 
@@ -45,6 +46,8 @@ func createOrder(js nats.JetStreamContext) error {
 		if err != nil {
 			return err
 		}
+                //vk: added
+		time.Sleep(15*time.Second)
 		log.Printf("Order with OrderID:%d has been published\n", i)
 	}
 	return nil

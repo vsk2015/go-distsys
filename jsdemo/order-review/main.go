@@ -59,5 +59,7 @@ func reviewOrder(js nats.JetStreamContext, order model.Order) {
 	if err != nil {
 		log.Fatal(err)
 	}
+        // vk: added
+	time.Sleep(15*time.Second)
 	log.Printf("Order with OrderID:%d has been %s\n", order.OrderID, order.Status)
 }
